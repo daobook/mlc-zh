@@ -12,14 +12,7 @@ def py_str(cstr):
 
 
 # list of files to skip
-skip_list = set(
-    [
-        "wheels.html",
-        ".gitignore",
-        ".nojekyll",
-        "CNAME",
-    ]
-)
+skip_list = {"wheels.html", ".gitignore", ".nojekyll", "CNAME"}
 
 
 def main():
@@ -37,7 +30,7 @@ def main():
         )
         (out, _) = proc.communicate()
         if proc.returncode != 0:
-            msg = "cmd error: %s" % cmd
+            msg = f"cmd error: {cmd}"
             msg += py_str(out)
             raise RuntimeError(msg)
         return py_str(out)
